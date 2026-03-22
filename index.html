@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishu Aggarwal | Portfolio</title>
+    <!-- Typography: Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for small accents -->
+    <script src="https:// some-cdn.com/lucide.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #F9FAFB;
+            --bg-secondary: #F3F4F6;
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent: #2563EB;
+            --border: #E5E7EB;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-bg {
+            background-color: var(--bg-secondary);
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 8rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .intro {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--text-muted);
+        }
+
+        /* --- About Section --- */
+        .about-text {
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* --- Skills Section --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .badge {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tools {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        /* --- Education Section --- */
+        .edu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .edu-item {
+            border-left: 2px solid var(--border);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .edu-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-item .school {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-item .status {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* --- Career Objective --- */
+        .objective-box {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 8px;
+            max-width: 800px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            section { padding: 4rem 0; }
+            .hero-info { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">Rishu Aggarwal</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <section class="hero">
+            <div class="fade-in">
+                <p class="tagline">Undergraduate Student</p>
+                <h1>Rishu Aggarwal</h1>
+                <p class="intro">BBA (Digital Business & Entrepreneurship) | B.Com Student. Aspiring business professional with a strong interest in management and continuous growth.</p>
+                
+                <div class="hero-info">
+                    <span>📍 Rohtak, Haryana</span>
+                    <span>✉️ arenu240@gmail.com</span>
+                </div>
+
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section-bg">
+        <div class="container fade-in">
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>I am an undergraduate student pursuing BBA in Digital Business & Entrepreneurship from IIM Bangalore along with B.Com from Delhi University. I have a strong interest in business and management and I am always eager to learn new skills.</p>
+                <p>I aim to grow professionally while building a meaningful career in the corporate world, focusing on practical applications of digital business strategies and entrepreneurship.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container fade-in">
+            <h2>Skills & Strengths</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Core Skills</h3>
+                    <div class="badge-list">
+                        <span class="badge">HTML</span>
+                        <span class="badge">CSS</span>
+                        <span class="badge">MS Excel</span>
+                        <span class="badge">Communication</span>
+                        <span class="badge">Time Management</span>
+                        <span class="badge">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Tech</h3>
+                    <div class="badge-list">
+                        <span class="badge">Web Development</span>
+                        <span class="badge">MS Word</span>
+                        <span class="badge">PowerPoint</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Strengths</h3>
+                    <div class="badge-list">
+                        <span class="badge">Hardworking</span>
+                        <span class="badge">Quick Learner</span>
+                        <span class="badge">Self-motivated</span>
+                        <span class="badge">Positive Attitude</span>
+                        <span class="badge">Consistent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-bg">
+        <div class="container fade-in">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>Portfolio Website</h3>
+                    <p>A simple yet professional personal portfolio developed to showcase academic and professional milestones.</p>
+                    <div class="project-tools">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>Business Case Study</h3>
+                    <p>Detailed analysis of a modern business model, evaluating strategy, market fit, and revenue generation.</p>
+                    <div class="project-tools">
+                        <span>Research</span>
+                        <span>Management</span>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3>Excel Dashboard</h3>
+                    <p>A data visualization project focused on creating interactive charts and data management systems.</p>
+                    <div class="project-tools">
+                        <span>MS Excel</span>
+                        <span>Data Viz</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container fade-in">
+            <h2>Education</h2>
+            <div class="edu-list">
+                <div class="edu-item">
+                    <span class="status">Ongoing</span>
+                    <h3>BBA in Digital Business & Entrepreneurship</h3>
+                    <p class="school">Indian Institute of Management (IIM) Bangalore</p>
+                </div>
+                <div class="edu-item">
+                    <span class="status">Ongoing</span>
+                    <h3>Bachelor of Commerce (B.Com)</h3>
+                    <p class="school">Delhi University</p>
+                </div>
+                <div class="edu-item">
+                    <span class="status">Completed</span>
+                    <h3>Class XII (Commerce)</h3>
+                    <p class="school">Shiksha Bharti Vidyalaya, Rohtak</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Objective Section -->
+    <section id="objective" class="section-bg">
+        <div class="container fade-in">
+            <h2>Career Objective</h2>
+            <div class="objective-box">
+                <p>My goal is to pursue an MBA from a reputed IIM and further complete a PhD. I aim to build a successful career in a reputed organization where I can apply my knowledge and continuously grow as a business professional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container fade-in">
+            <div class="contact-content">
+                <h2>Get In Touch</h2>
+                <p>I am always open to new learning opportunities, internships, and professional collaborations. Feel free to reach out!</p>
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:arenu240@gmail.com" class="btn btn-primary">Email Me: arenu240@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Rishu Aggarwal. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation Logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Simple Mobile Menu Toggle placeholder
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderBottom = '1px solid var(--border)';
+            }
+        }
+    </script>
+</body>
+</html>
